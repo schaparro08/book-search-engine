@@ -39,8 +39,8 @@ type Auth {
   }
 
   type Mutation {
-      addUser(username: String!, email: String!, password: String!): Auth
-      login(email: Sring!, password: String!): Auth
+      addUsers(username: String!, email: String!, password: String!): Auth
+      login(email: String!, password: String!): Auth
 
       saveBook(input:savedBooks!): User
       removeBook(bookId: ID!): User

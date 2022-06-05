@@ -15,7 +15,7 @@ const SavedBooks = () => {
 
   const handleDeleteBook = async (bookId) => {
     const tokens = Auth.loggedIn() ? Auth. getToken : null;
-    if (!token) {
+    if (!tokens) {
       return false;
     }
 
@@ -27,8 +27,8 @@ const SavedBooks = () => {
     } catch(err) {
       console.error(err);
     }
-    }
-  }
+    };
+  
 
   return (
     <>
