@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { removeBookId, saveBookIds } from '../utils/localStorage';
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { removeBookId} from '../utils/localStorage';
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
 
 const SavedBooks = () => {
-  const [load, data] = useQuery({GET_ME});
+  const {loading, data}= useQuery({GET_ME});
   const [removeBook, {error}] = useMutation(REMOVE_BOOK)
   // use this to determine if `useEffect()` hook needs to run again
   const userData = data?.me || {};
 
   const handleDeleteBook = async (bookId) => {
-    const tokens = Auth.loggedIn() ? Auth. getToken : null;
+    const tokens = Auth.loggedIn() ? Auth.getToken : null;
     if (!tokens) {
       return false;
     }
@@ -28,6 +28,10 @@ const SavedBooks = () => {
       console.error(err);
     }
     };
+
+    if (loading) {
+      return <h2>No Data yet...</h2>;
+    }
   
 
   return (
