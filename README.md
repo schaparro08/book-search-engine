@@ -6,7 +6,7 @@
 
 ## Location
 
-> ![screenshot]()
+> ![screenshot](./Assets/HarryPotter.png)
 
 > [repo link](https://github.com/schaparro08/book-search-engine)
 
